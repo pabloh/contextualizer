@@ -1,4 +1,7 @@
-# Contextualized
+# Contextualizer
+
+[![CircleCI](https://circleci.com/gh/pabloh/contextualizer/tree/master.svg?style=shield)](https://circleci.com/gh/pabloh/contextualizer/tree/master)
+[![Coverage Status](https://coveralls.io/repos/github/pabloh/contextualizer/badge.svg?branch=master)](https://coveralls.io/github/pabloh/contextualizer?branch=master)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/contextualizer`. To experiment with that code, run `bin/console` for an interactive prompt.
 
