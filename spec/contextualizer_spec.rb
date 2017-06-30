@@ -48,6 +48,16 @@ describe Contextualizer do
         end
       end
 
+      context 'and initializing using nil as value' do
+        let(:object) { klass.new(foo: nil, bar: 'BAR') }
+
+        it 'sets correct values' do
+          expect(object.foo).to eq(nil)
+          expect(object.bar).to eq('BAR')
+          expect(object.quz).to eq('QUZ')
+        end
+      end
+
       context 'and initializing using false as value' do
         let(:object) { klass.new(foo: false, bar: 'BAR') }
 
@@ -55,6 +65,16 @@ describe Contextualizer do
           expect(object.foo).to eq(false)
           expect(object.bar).to eq('BAR')
           expect(object.quz).to eq('QUZ')
+        end
+      end
+
+      context 'and overriding a default value using nil' do
+        let(:object) { klass.new(foo: 'FOO', bar: 'BAR', quz: nil) }
+
+        it 'sets correct values' do
+          expect(object.foo).to eq('FOO')
+          expect(object.bar).to eq('BAR')
+          expect(object.quz).to eq(nil)
         end
       end
 
