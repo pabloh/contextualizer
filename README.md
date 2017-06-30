@@ -1,5 +1,6 @@
 # Contextualizer
 
+[![Gem Version](https://badge.fury.io/rb/contextualizer.svg)](https://badge.fury.io/rb/contextualizer)
 [![CircleCI](https://circleci.com/gh/pabloh/contextualizer/tree/master.svg?style=shield)](https://circleci.com/gh/pabloh/contextualizer/tree/master)
 [![Coverage Status](https://coveralls.io/repos/github/pabloh/contextualizer/badge.svg?branch=master)](https://coveralls.io/github/pabloh/contextualizer?branch=master)
 
