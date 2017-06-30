@@ -1,3 +1,5 @@
+require 'contextualizer/version'
+
 module Contextualizer
   def context(*attrs, **opt_attrs)
     unless @_setter 
