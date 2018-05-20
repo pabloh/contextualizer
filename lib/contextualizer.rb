@@ -1,6 +1,8 @@
 require 'contextualizer/version'
 
 module Contextualizer
+  OPTIONAL = Object.new.freeze
+
   def context(*attrs, **opt_attrs)
     unless @__setter
       @__setter = Setter.new
@@ -37,19 +39,23 @@ module Contextualizer
 
   class Setter
     def initialize
-      @attrs, @opt_attrs = [], {}
+      @mandatory, @with_default, @optional = [], {}, []
     end
 
     def add_attrs(*attrs, **opt_attrs)
-      @attrs |= attrs
-      @opt_attrs.merge!(opt_attrs)
+      optional, with_default = opt_attrs.partition { |_, v| v == OPTIONAL }.map(&:to_h)
+
+      @mandatory |= attrs
+      @optional |= optional.keys
+      @with_default.merge!(with_default)
     end
 
     def set(obj, args)
       context = obj.context&.dup || {}
 
-      @opt_attrs.each { |key, default| context[key] = args.key?(key) ? args[key] : default }
-      @attrs.each do |key|
+      @with_default.each { |key, default| context[key] = args.fetch(key, default) }
+      @optional.each { |key| context[key] = args[key] if args.key?(key) }
+      @mandatory.each do |key|
         fail ":#{key} was not found in scope" unless args.key?(key)
         context[key] = args[key]
       end
