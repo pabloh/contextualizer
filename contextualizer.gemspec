@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Allows to define context values for your objects}
   spec.description   = %q{Allows to define context values for your objects}
-  #spec.homepage      = "http://github.com/pabloh/contextualizer"
+  spec.homepage      = "http://github.com/pabloh/contextualizer"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
