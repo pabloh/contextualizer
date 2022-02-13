@@ -1,8 +1,9 @@
 require 'contextualizer'
+require 'ruby2_keywords'
 
 module Contextualizer
   module Callable
-    def call(ctx, *args, &bl)
+    ruby2_keywords def call(ctx, *args, &bl)
       new(ctx).call(*args, &bl)
     end
 
