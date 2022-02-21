@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "ruby2_keywords"
 
-  spec.add_development_dependency "bundler", ">= 1.14.0"
+  spec.add_development_dependency "bundler", "~> 2.3.7"
   spec.add_development_dependency "rake", "~> 12.3.3"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "simplecov-lcov", '~> 0.8.0'
