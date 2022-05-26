@@ -24,14 +24,14 @@ module Contextualizer
   def self.init_for(setter, inherited = true)
     Module.new do |mod|
       if inherited
-        mod.send(:define_method, :initialize) do |args = {}|
-          super(args)
-          setter.set(self, args)
+        mod.send(:define_method, :initialize) do |ctx = {}|
+          super(ctx)
+          setter.set(self, ctx)
         end
       else
-        mod.send(:define_method, :initialize) do |args = {}|
+        mod.send(:define_method, :initialize) do |ctx = {}|
           super()
-          setter.set(self, args)
+          setter.set(self, ctx)
         end
       end
     end
@@ -50,14 +50,14 @@ module Contextualizer
       @with_default.merge!(with_default)
     end
 
-    def set(obj, args)
+    def set(obj, ctx)
       context = obj.context&.dup || {}
 
-      @with_default.each { |key, default| context[key] = args.fetch(key, default) }
-      @optional.each { |key| context[key] = args[key] if args.key?(key) }
+      @with_default.each { |key, default| context[key] = ctx.fetch(key, default) }
+      @optional.each { |key| context[key] = ctx[key] if ctx.key?(key) }
       @mandatory.each do |key|
-        fail ":#{key} was not found in scope" unless args.key?(key)
-        context[key] = args[key]
+        fail ":#{key} was not found in scope" unless ctx.key?(key)
+        context[key] = ctx[key]
       end
 
       context.each do |attr, value|
