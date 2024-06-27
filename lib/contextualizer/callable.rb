@@ -1,10 +1,9 @@
 require 'contextualizer'
-require 'ruby2_keywords'
 
 module Contextualizer
   module Callable
-    ruby2_keywords def call(ctx, *args, &bl)
-      new(ctx).call(*args, &bl)
+    def call(ctx,...)
+      new(ctx).call(...)
     end
 
     def self.extended(klass)
