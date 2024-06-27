@@ -1,4 +1,6 @@
-require 'contextualizer/version'
+# frozen_string_literal: true
+
+require "contextualizer/version"
 
 module Contextualizer
   OPTIONAL = Object.new.freeze
