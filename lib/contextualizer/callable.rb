@@ -1,4 +1,6 @@
-require 'contextualizer'
+# frozen_string_literal: true
+
+require "contextualizer"
 
 module Contextualizer
   module Callable
